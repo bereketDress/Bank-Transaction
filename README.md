@@ -1,6 +1,6 @@
 # Bank of CLI
 
-A desktop banking application built with Java 21, Swing, Maven, JDBC, PostgreSQL, HikariCP, and BCrypt.
+A CLI-based banking application with a Swing GUI, built with Java 21, Maven, JDBC, PostgreSQL, HikariCP, and BCrypt.
 
 ## Features
 
