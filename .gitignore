@@ -1,7 +1,9 @@
-    /target/
-    /logs/
-    /out/
-    .idea/
-    *.iml
-    .env
-    db.properties
+/target/
+/logs/
+/out/
+
+.idea/
+*.iml
+
+.env
+db.properties
