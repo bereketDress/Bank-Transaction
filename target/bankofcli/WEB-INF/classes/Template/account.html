@@ -1,0 +1,15 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Account | BankOfCLI</title><link rel="stylesheet" th:href="@{/style.css}"></head>
+<body><main><header><a th:href="@{/}">All accounts</a><form th:action="@{/logout}" method="post"><button>Sign out</button></form></header>
+<h1 th:text="|${account.type} #${account.accountId}|"></h1><p class="balance" th:text="|Balance: ${account.balance}|"></p>
+<p role="status" th:if="${message}" th:text="${message}"></p>
+<section><h2>Make a transaction</h2><form th:action="@{/accounts/{id}/transactions(id=${account.accountId})}" method="post">
+<label>Operation<select name="operation"><option value="deposit">Deposit</option><option value="withdraw">Withdraw</option><option value="transfer">Transfer</option></select></label>
+<label>Amount<input name="amount" type="number" min="0.01" step="0.01" required></label>
+<label>Destination account (transfers only)<input name="destination" type="number" min="1" step="1"></label>
+<button>Submit transaction</button></form></section>
+<section><h2>Recent transactions</h2><p th:if="${#lists.isEmpty(transactions)}">No transactions yet.</p>
+<div class="table-wrap"><table th:unless="${#lists.isEmpty(transactions)}"><thead><tr><th>ID</th><th>Type</th><th>Amount</th><th>Status</th><th>Date</th></tr></thead>
+<tbody><tr th:each="transaction : ${transactions}"><td th:text="${transaction.transactionId}"></td><td th:text="${transaction.transactionType}"></td><td th:text="${transaction.amount}"></td><td th:text="${transaction.transactionStatus}"></td><td th:text="${transaction.executedAt}"></td></tr></tbody></table></div>
+<p>Showing up to 50 transactions.</p></section></main></body></html>

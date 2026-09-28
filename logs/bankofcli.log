@@ -1,0 +1,34 @@
+2026-09-25 14:17:04 INFO  c.b.s.impl.TransactionServiceImpl - DEPOSIT transaction completed successfully
+2026-09-25 14:17:04 INFO  c.b.s.impl.TransactionServiceImpl - WITHDRAWAL transaction completed successfully
+2026-09-25 14:17:04 INFO  c.b.s.impl.TransactionServiceImpl - TRANSFER transaction completed successfully
+2026-09-25 14:17:31 INFO  c.b.service.impl.AccountServiceImpl - CHECKING account created successfully
+2026-09-25 14:17:32 INFO  c.b.s.impl.TransactionServiceImpl - DEPOSIT transaction completed successfully
+2026-09-25 14:17:32 INFO  c.b.s.impl.TransactionServiceImpl - WITHDRAWAL transaction completed successfully
+2026-09-25 14:17:32 INFO  c.b.s.impl.TransactionServiceImpl - TRANSFER transaction completed successfully
+2026-09-25 14:17:32 INFO  c.b.service.impl.UserServiceImpl - User registered successfully
+2026-09-25 14:17:32 INFO  c.b.service.impl.UserServiceImpl - User logged in successfully
+2026-09-25 14:32:15 INFO  c.b.s.impl.TransactionServiceImpl - DEPOSIT transaction completed successfully
+2026-09-25 14:32:15 INFO  c.b.s.impl.TransactionServiceImpl - WITHDRAWAL transaction completed successfully
+2026-09-25 14:32:15 INFO  c.b.s.impl.TransactionServiceImpl - TRANSFER transaction completed successfully
+2026-09-25 14:35:01 INFO  c.b.s.impl.TransactionServiceImpl - DEPOSIT transaction completed successfully
+2026-09-25 14:35:01 INFO  c.b.s.impl.TransactionServiceImpl - WITHDRAWAL transaction completed successfully
+2026-09-25 14:35:01 INFO  c.b.s.impl.TransactionServiceImpl - TRANSFER transaction completed successfully
+2026-09-25 14:35:46 INFO  c.b.service.impl.AccountServiceImpl - CHECKING account created successfully
+2026-09-25 14:35:46 INFO  c.b.s.impl.TransactionServiceImpl - DEPOSIT transaction completed successfully
+2026-09-25 14:35:46 INFO  c.b.s.impl.TransactionServiceImpl - WITHDRAWAL transaction completed successfully
+2026-09-25 14:35:46 INFO  c.b.s.impl.TransactionServiceImpl - TRANSFER transaction completed successfully
+2026-09-25 14:35:46 INFO  c.b.service.impl.UserServiceImpl - User registered successfully
+2026-09-25 14:35:46 INFO  c.b.service.impl.UserServiceImpl - User logged in successfully
+2026-09-25 14:37:20 INFO  c.b.service.impl.AccountServiceImpl - CHECKING account created successfully
+2026-09-25 14:37:20 INFO  c.b.s.impl.TransactionServiceImpl - DEPOSIT transaction completed successfully
+2026-09-25 14:37:20 INFO  c.b.s.impl.TransactionServiceImpl - WITHDRAWAL transaction completed successfully
+2026-09-25 14:37:20 INFO  c.b.s.impl.TransactionServiceImpl - TRANSFER transaction completed successfully
+2026-09-25 14:37:20 INFO  c.b.service.impl.UserServiceImpl - User registered successfully
+2026-09-25 14:37:20 INFO  c.b.service.impl.UserServiceImpl - User logged in successfully
+2026-09-25 14:39:46 INFO  com.zaxxer.hikari.HikariDataSource - bankofcli-pool - Starting...
+2026-09-25 14:39:46 INFO  com.zaxxer.hikari.pool.HikariPool - bankofcli-pool - Added connection org.postgresql.jdbc.PgConnection@b3e7ab2
+2026-09-25 14:39:46 INFO  com.zaxxer.hikari.HikariDataSource - bankofcli-pool - Start completed.
+2026-09-25 14:39:46 WARN  com.bankofcli.ui.swing.UiSupport - Request rejected: User not found
+2026-09-25 14:40:40 WARN  com.bankofcli.ui.swing.UiSupport - Request rejected: Password must be at least 8 characters
+2026-09-25 14:41:33 INFO  com.zaxxer.hikari.HikariDataSource - bankofcli-pool - Shutdown initiated...
+2026-09-25 14:41:33 INFO  com.zaxxer.hikari.HikariDataSource - bankofcli-pool - Shutdown completed.

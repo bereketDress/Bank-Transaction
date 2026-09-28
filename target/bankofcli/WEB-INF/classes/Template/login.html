@@ -1,0 +1,12 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Sign in | BankOfCLI</title><link rel="stylesheet" th:href="@{/style.css}"></head>
+<body><main class="auth"><h1>BankOfCLI</h1><h2>Sign in</h2>
+<p class="error" role="alert" th:if="${param.error}">Unable to sign in. Check your email and password and try again.</p>
+<p role="status" th:if="${param.logout}">You have signed out.</p>
+<p role="status" th:if="${message}" th:text="${message}"></p>
+<form th:action="@{/login}" method="post">
+<label>Email<input type="email" name="email" autocomplete="username" required></label>
+<label>Password<input type="password" name="password" autocomplete="current-password" required></label>
+<button type="submit">Sign in</button></form>
+<p>New here? <a th:href="@{/register}">Create a profile</a></p></main></body></html>

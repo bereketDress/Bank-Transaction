@@ -1,0 +1,15 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Accounts | BankOfCLI</title><link rel="stylesheet" th:href="@{/style.css}"></head>
+<body><main><header><h1 th:text="|Welcome, ${displayName}|"></h1><form th:action="@{/logout}" method="post"><button>Sign out</button></form></header>
+<p class="error" role="alert" th:if="${error}" th:text="${error}"></p><p role="status" th:if="${message}" th:text="${message}"></p>
+<h2>Your accounts</h2><p th:if="${#lists.isEmpty(accounts)}">No accounts yet. Create your first account below.</p>
+<div class="grid"><section th:each="account : ${accounts}">
+<h3 th:text="|${account.type} #${account.accountId}|"></h3>
+<form th:action="@{/accounts/{id}/unlock(id=${account.accountId})}" method="post">
+<label>Account PIN<input type="password" name="pin" inputmode="numeric" pattern="[0-9]{4,6}" maxlength="6" autocomplete="off" required></label>
+<button>Open account</button></form></section></div>
+<section><h2>Create an account</h2><form th:action="@{/accounts}" method="post">
+<label>Account type<select name="type"><option th:each="type : ${accountTypes}" th:value="${type}" th:text="${type}"></option></select></label>
+<label>PIN (4–6 digits)<input type="password" name="pin" inputmode="numeric" pattern="[0-9]{4,6}" maxlength="6" autocomplete="new-password" required></label>
+<button>Create account</button></form></section></main></body></html>

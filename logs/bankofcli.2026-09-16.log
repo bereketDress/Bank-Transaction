@@ -1,0 +1,82 @@
+2026-09-16 11:25:55 INFO  c.b.s.impl.SystemLogServiceImpl - User registered successfully
+2026-09-16 11:25:55 INFO  c.b.s.impl.SystemLogServiceImpl - User registered successfully
+2026-09-16 11:25:56 INFO  c.b.s.impl.SystemLogServiceImpl - Created CHECKING account 1
+2026-09-16 11:25:56 INFO  c.b.s.impl.SystemLogServiceImpl - Account 1 authenticated successfully
+2026-09-16 11:25:56 ERROR c.b.s.impl.SystemLogServiceImpl - Failed account login attempt for account 1
+2026-09-16 11:25:57 INFO  c.b.s.impl.SystemLogServiceImpl - User registered successfully
+2026-09-16 11:25:57 INFO  c.b.s.impl.SystemLogServiceImpl - User registered successfully
+2026-09-16 11:25:58 INFO  c.b.s.impl.SystemLogServiceImpl - User logged in successfully
+2026-09-16 11:25:59 INFO  c.b.s.impl.SystemLogServiceImpl - User registered successfully
+2026-09-16 11:25:59 ERROR c.b.s.impl.SystemLogServiceImpl - Failed user login attempt
+2026-09-16 11:26:00 INFO  c.b.s.impl.SystemLogServiceImpl - User registered successfully
+2026-09-16 11:26:00 INFO  c.b.s.impl.SystemLogServiceImpl - User registered successfully
+2026-09-16 11:26:01 INFO  c.b.s.impl.SystemLogServiceImpl - User registered successfully
+2026-09-16 11:26:01 INFO  c.b.s.impl.SystemLogServiceImpl - User registered successfully
+2026-09-16 11:26:02 INFO  c.b.s.impl.SystemLogServiceImpl - User registered successfully
+2026-09-16 11:26:02 INFO  c.b.s.impl.SystemLogServiceImpl - User registered successfully
+2026-09-16 11:26:03 INFO  c.b.s.impl.SystemLogServiceImpl - User registered successfully
+2026-09-16 11:26:03 INFO  c.b.s.impl.SystemLogServiceImpl - User registered successfully
+2026-09-16 11:26:03 INFO  c.b.s.impl.SystemLogServiceImpl - Created CHECKING account 1
+2026-09-16 11:26:04 INFO  c.b.s.impl.SystemLogServiceImpl - Created SAVING account 2
+2026-09-16 11:26:04 INFO  c.b.s.impl.SystemLogServiceImpl - User registered successfully
+2026-09-16 11:26:05 INFO  c.b.s.impl.SystemLogServiceImpl - User registered successfully
+2026-09-16 11:26:05 INFO  c.b.s.impl.SystemLogServiceImpl - Created CHECKING account 1
+2026-09-16 11:26:06 INFO  c.b.s.impl.SystemLogServiceImpl - Created SAVING account 2
+2026-09-16 11:26:06 INFO  c.b.s.impl.SystemLogServiceImpl - User registered successfully
+2026-09-16 11:26:07 INFO  c.b.s.impl.SystemLogServiceImpl - User registered successfully
+2026-09-16 11:26:07 INFO  c.b.s.impl.SystemLogServiceImpl - Created CHECKING account 1
+2026-09-16 11:26:07 INFO  c.b.s.impl.SystemLogServiceImpl - Created SAVING account 2
+2026-09-16 11:26:08 INFO  c.b.s.impl.SystemLogServiceImpl - User registered successfully
+2026-09-16 11:26:08 INFO  c.b.s.impl.SystemLogServiceImpl - User registered successfully
+2026-09-16 11:26:09 INFO  c.b.s.impl.SystemLogServiceImpl - Created CHECKING account 1
+2026-09-16 11:26:09 INFO  c.b.s.impl.SystemLogServiceImpl - Created SAVING account 2
+2026-09-16 11:26:10 INFO  c.b.s.impl.SystemLogServiceImpl - User registered successfully
+2026-09-16 11:26:10 INFO  c.b.s.impl.SystemLogServiceImpl - User registered successfully
+2026-09-16 11:26:11 INFO  c.b.s.impl.SystemLogServiceImpl - Created CHECKING account 1
+2026-09-16 11:26:11 INFO  c.b.s.impl.SystemLogServiceImpl - Created SAVING account 2
+2026-09-16 11:26:12 INFO  c.b.s.impl.SystemLogServiceImpl - User registered successfully
+2026-09-16 11:26:12 INFO  c.b.s.impl.SystemLogServiceImpl - User registered successfully
+2026-09-16 11:26:12 INFO  c.b.s.impl.SystemLogServiceImpl - Created CHECKING account 1
+2026-09-16 11:26:13 INFO  c.b.s.impl.SystemLogServiceImpl - Created SAVING account 2
+2026-09-16 11:26:13 INFO  c.b.s.impl.SystemLogServiceImpl - Deposited 10.00 into account 1
+2026-09-16 11:26:13 ERROR c.b.s.impl.SystemLogServiceImpl - Withdrawal failed for account 1
+2026-09-16 11:26:13 ERROR c.b.s.impl.SystemLogServiceImpl - Transfer failed from account 1 to account 2
+2026-09-16 11:26:14 INFO  c.b.s.impl.SystemLogServiceImpl - User registered successfully
+2026-09-16 11:26:14 INFO  c.b.s.impl.SystemLogServiceImpl - User registered successfully
+2026-09-16 11:26:15 INFO  c.b.s.impl.SystemLogServiceImpl - Created CHECKING account 1
+2026-09-16 11:26:15 INFO  c.b.s.impl.SystemLogServiceImpl - Created SAVING account 2
+2026-09-16 11:26:15 INFO  c.b.s.impl.SystemLogServiceImpl - Deposited 1000000000.00 into account 1
+2026-09-16 11:26:15 INFO  c.b.s.impl.SystemLogServiceImpl - Withdrew 1000000000.00 from account 1
+2026-09-16 11:26:15 INFO  c.b.s.impl.SystemLogServiceImpl - User registered successfully
+2026-09-16 11:26:16 INFO  c.b.s.impl.SystemLogServiceImpl - User registered successfully
+2026-09-16 11:26:16 INFO  c.b.s.impl.SystemLogServiceImpl - Created CHECKING account 1
+2026-09-16 11:26:17 INFO  c.b.s.impl.SystemLogServiceImpl - Created SAVING account 2
+2026-09-16 11:26:17 INFO  c.b.s.impl.SystemLogServiceImpl - Deposited 50.00 into account 1
+2026-09-16 11:26:17 ERROR c.b.s.impl.SystemLogServiceImpl - Transfer failed from account 1 to account 999
+2026-09-16 11:26:17 INFO  c.b.s.impl.SystemLogServiceImpl - User registered successfully
+2026-09-16 11:26:17 INFO  c.b.s.impl.SystemLogServiceImpl - User registered successfully
+2026-09-16 11:26:18 INFO  c.b.s.impl.SystemLogServiceImpl - Created CHECKING account 1
+2026-09-16 11:26:18 INFO  c.b.s.impl.SystemLogServiceImpl - Created SAVING account 2
+2026-09-16 11:26:18 INFO  c.b.s.impl.SystemLogServiceImpl - Deposited 50.00 into account 1
+2026-09-16 11:26:18 ERROR c.b.s.impl.SystemLogServiceImpl - Withdrawal failed for account 1
+2026-09-16 11:26:18 ERROR c.b.s.impl.SystemLogServiceImpl - Transfer failed from account 1 to account 2
+2026-09-16 11:26:19 INFO  c.b.s.impl.SystemLogServiceImpl - User registered successfully
+2026-09-16 11:26:19 INFO  c.b.s.impl.SystemLogServiceImpl - User registered successfully
+2026-09-16 11:26:19 INFO  c.b.s.impl.SystemLogServiceImpl - Created CHECKING account 1
+2026-09-16 11:26:20 INFO  c.b.s.impl.SystemLogServiceImpl - Created SAVING account 2
+2026-09-16 11:26:20 INFO  c.b.s.impl.SystemLogServiceImpl - Deposited 100.00 into account 1
+2026-09-16 11:26:20 INFO  c.b.s.impl.SystemLogServiceImpl - Transferred 40.25 from account 1 to account 2
+2026-09-16 11:26:20 INFO  c.b.s.impl.SystemLogServiceImpl - Transferred 40.25 from account 2 to account 1
+2026-09-16 11:26:20 INFO  c.b.s.impl.SystemLogServiceImpl - User registered successfully
+2026-09-16 11:26:21 INFO  c.b.s.impl.SystemLogServiceImpl - User registered successfully
+2026-09-16 11:26:21 INFO  c.b.s.impl.SystemLogServiceImpl - Created CHECKING account 1
+2026-09-16 11:26:22 INFO  c.b.s.impl.SystemLogServiceImpl - Created SAVING account 2
+2026-09-16 11:26:22 INFO  c.b.s.impl.SystemLogServiceImpl - Deposited 50.00 into account 1
+2026-09-16 11:26:22 ERROR c.b.s.impl.SystemLogServiceImpl - Withdrawal failed for account 1
+2026-09-16 11:26:22 ERROR c.b.s.impl.SystemLogServiceImpl - Transfer failed from account 1 to account 2
+2026-09-16 11:26:22 INFO  c.b.s.impl.SystemLogServiceImpl - User registered successfully
+2026-09-16 11:26:22 INFO  c.b.s.impl.SystemLogServiceImpl - User registered successfully
+2026-09-16 11:26:23 INFO  c.b.s.impl.SystemLogServiceImpl - Created CHECKING account 1
+2026-09-16 11:26:23 INFO  c.b.s.impl.SystemLogServiceImpl - Created SAVING account 2
+2026-09-16 11:26:23 INFO  c.b.s.impl.SystemLogServiceImpl - Deposited 100.00 into account 1
+2026-09-16 11:26:23 INFO  c.b.s.impl.SystemLogServiceImpl - Withdrew 25.50 from account 1

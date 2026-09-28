@@ -1,0 +1,18 @@
+* { box-sizing: border-box; }
+body { margin: 0; background: #f3f6fa; color: #172c43; font: 16px/1.5 system-ui, sans-serif; }
+main { max-width: 960px; margin: 3rem auto; padding: 0 1.25rem; }
+main.auth { max-width: 440px; }
+header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+section, .auth { background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
+label { display: block; margin: 1rem 0; }
+input, select { display: block; width: 100%; padding: .7rem; margin-top: .3rem; border: 1px solid #8a9bae; border-radius: 6px; font: inherit; }
+button { border: 0; border-radius: 6px; padding: .75rem 1rem; background: #174b80; color: white; font: inherit; cursor: pointer; }
+button:hover { background: #10385f; }
+a { color: #174b80; }
+:focus-visible { outline: 3px solid #bf7300; outline-offset: 3px; }
+.error { color: #a01919; background: #fff1f1; padding: 1rem; }
+.balance { font-size: 1.6rem; font-weight: 600; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; text-align: left; }
+th, td { padding: .65rem; border-bottom: 1px solid #dce3eb; }
