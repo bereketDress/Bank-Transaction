@@ -1,4 +1,4 @@
-package com.bankofcli.api;
+package com.bankofcli.api.contract;
 
 import com.bankofcli.model.User;
 

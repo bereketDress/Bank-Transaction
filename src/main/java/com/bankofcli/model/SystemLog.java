@@ -3,24 +3,23 @@ package com.bankofcli.model;
 import com.bankofcli.enums.LogLevel;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class SystemLog {
+
     private Long logId;
     private LogLevel level;
     private String message;
     private LocalDateTime createdAt;
-    private Long userId;
+    private User user;
 
-    public SystemLog() {
-    }
-
-    public SystemLog(Long logId, LogLevel level, String message,
-                     LocalDateTime createdAt, Long userId) {
+    public SystemLog(Long logId, LogLevel level, String message, LocalDateTime createdAt, User user) {
         this.logId = logId;
-        this.level = level;
-        this.message = message;
-        this.createdAt = createdAt;
-        this.userId = userId;
+        this.level = Objects.requireNonNull(level);
+        this.message = Objects.requireNonNull(message);
+        this.createdAt = createdAt == null ? LocalDateTime.now() : createdAt;
+        this.user = user;
+
     }
 
     public Long getLogId() {
@@ -36,7 +35,7 @@ public class SystemLog {
     }
 
     public void setLevel(LogLevel level) {
-        this.level = level;
+        this.level = Objects.requireNonNull(level);
     }
 
     public String getMessage() {
@@ -44,22 +43,16 @@ public class SystemLog {
     }
 
     public void setMessage(String message) {
-        this.message = message;
+        this.message = Objects.requireNonNull(message);
     }
 
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
+    public User getUser() {
+        return user;
     }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 }

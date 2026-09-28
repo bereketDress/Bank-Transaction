@@ -5,29 +5,45 @@ import com.bankofcli.enums.TransactionType;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class Transaction {
+
     private Long transactionId;
-    private Long sourceAccountId;
-    private Long destinationAccountId;
     private BigDecimal amount;
     private LocalDateTime executedAt;
-    private TransactionType type;
-    private TransactionStatus status;
 
-    public Transaction() {
-    }
+    private TransactionType transactionType;
+    private TransactionStatus transactionStatus;
 
-    public Transaction(Long transactionId, Long sourceAccountId, Long destinationAccountId,
-                       BigDecimal amount, LocalDateTime executedAt,
-                       TransactionType type, TransactionStatus status) {
+    private Account sourceAccount;
+    private Account destinationAccount;
+
+
+    public Transaction(
+            Long transactionId,
+            BigDecimal amount,
+            LocalDateTime executedAt,
+            TransactionType transactionType,
+            TransactionStatus transactionStatus,
+            Account sourceAccount,
+            Account destinationAccount
+    ) {
+        validateAmount(amount);
+
         this.transactionId = transactionId;
-        this.sourceAccountId = sourceAccountId;
-        this.destinationAccountId = destinationAccountId;
         this.amount = amount;
         this.executedAt = executedAt;
-        this.type = type;
-        this.status = status;
+        this.transactionType = Objects.requireNonNull(transactionType);
+        this.transactionStatus = Objects.requireNonNull(transactionStatus);
+        this.sourceAccount = sourceAccount;
+        this.destinationAccount = destinationAccount;
+    }
+
+    private void validateAmount(BigDecimal amount) {
+        if (amount == null || amount.compareTo(BigDecimal.ZERO) <= 0) {
+            throw new IllegalArgumentException("Transaction amount must be greater than zero");
+        }
     }
 
     public Long getTransactionId() {
@@ -38,28 +54,8 @@ public class Transaction {
         this.transactionId = transactionId;
     }
 
-    public Long getSourceAccountId() {
-        return sourceAccountId;
-    }
-
-    public void setSourceAccountId(Long sourceAccountId) {
-        this.sourceAccountId = sourceAccountId;
-    }
-
-    public Long getDestinationAccountId() {
-        return destinationAccountId;
-    }
-
-    public void setDestinationAccountId(Long destinationAccountId) {
-        this.destinationAccountId = destinationAccountId;
-    }
-
     public BigDecimal getAmount() {
         return amount;
-    }
-
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
     }
 
     public LocalDateTime getExecutedAt() {
@@ -70,19 +66,35 @@ public class Transaction {
         this.executedAt = executedAt;
     }
 
-    public TransactionType getType() {
-        return type;
+    public TransactionType getTransactionType() {
+        return transactionType;
     }
 
-    public void setType(TransactionType type) {
-        this.type = type;
+    public void setTransactionType(TransactionType transactionType) {
+        this.transactionType = Objects.requireNonNull(transactionType);
     }
 
-    public TransactionStatus getStatus() {
-        return status;
+    public TransactionStatus getTransactionStatus() {
+        return transactionStatus;
     }
 
-    public void setStatus(TransactionStatus status) {
-        this.status = status;
+    public void setTransactionStatus(TransactionStatus transactionStatus) {
+        this.transactionStatus = Objects.requireNonNull(transactionStatus);
+    }
+
+    public Account getSourceAccount() {
+        return sourceAccount;
+    }
+
+    public void setSourceAccount(Account sourceAccount) {
+        this.sourceAccount = sourceAccount;
+    }
+
+    public Account getDestinationAccount() {
+        return destinationAccount;
+    }
+
+    public void setDestinationAccount(Account destinationAccount) {
+        this.destinationAccount = destinationAccount;
     }
 }

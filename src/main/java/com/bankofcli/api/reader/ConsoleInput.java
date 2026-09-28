@@ -1,4 +1,4 @@
-package com.bankofcli.api;
+package com.bankofcli.api.reader;
 
 import java.math.BigDecimal;
 import java.util.Scanner;

@@ -1,12 +1,13 @@
 package com.bankofcli.api.impl;
 
-import com.bankofcli.api.AccountApi;
-import com.bankofcli.api.ConsoleInput;
-import com.bankofcli.api.UserApi;
+import com.bankofcli.api.contract.AccountApi;
+import com.bankofcli.api.reader.ConsoleInput;
+import com.bankofcli.api.contract.UserApi;
 import com.bankofcli.model.User;
-import com.bankofcli.service.UserService;
+import com.bankofcli.service.contract.UserService;
 
-public final class UserApiImpl implements UserApi {
+public class UserApiImpl implements UserApi {
+
     private final ConsoleInput input;
     private final UserService userService;
     private final AccountApi accountApi;
@@ -19,49 +20,49 @@ public final class UserApiImpl implements UserApi {
 
     @Override
     public void run() {
-        boolean running = true;
-        while (running) {
-            printWelcomeMenu();
-            switch (input.readInt("Choose an option: ")) {
+
+        while (true) {
+
+            System.out.println("""
+                    1. Register
+                    2. Login
+                    3. Exit
+                    """);
+
+            int choice = Integer.parseInt(input.readText("Choose: "));
+
+            switch (choice) {
                 case 1 -> register();
                 case 2 -> login();
-                case 3 -> running = false;
-                default -> System.out.println("Please choose 1, 2, or 3.");
+                case 3 -> {
+                    System.out.println("Goodbye!");
+                    return;
+                }
+                default -> System.out.println("Invalid option");
             }
         }
-        System.out.println("Thank you for using bankofcli.");
     }
 
     private void register() {
-        try {
-            String name = input.readText("Name: ");
-            String email = input.readText("Email: ");
-            String password = input.readLine("Password (minimum 8 characters): ");
-            User user = userService.registerUser(name, email, password);
-            System.out.println("Registration successful. Your user ID is " + user.getUserId() + ".");
-        } catch (RuntimeException exception) {
-            input.showError(exception);
-        }
+
+        String name = input.readText("Name: ");
+        String email = input.readText("Email: ");
+        String password = input.readText("Password: ");
+
+        User user = userService.registerUser(name, email, password);
+
+        System.out.println("Registered. User ID: " + user.getUserId());
     }
 
     private void login() {
-        try {
-            User user = userService.loginUser(input.readText("Email: "), input.readLine("Password: "));
-            System.out.println("Welcome, " + user.getUserName() + "!");
-            accountApi.showMenu(user);
-        } catch (RuntimeException exception) {
-            input.showError(exception);
-        }
-    }
 
-    private void printWelcomeMenu() {
-        System.out.println("""
+        String email = input.readText("Email: ");
+        String password = input.readText("Password: ");
 
-                ===== bankofcli =====
-                1. Register
-                2. Login
-                3. Exit
-                =======================
-                """);
+        User user = userService.loginUser(email, password);
+
+        System.out.println("Welcome " + user.getUserName());
+
+        accountApi.showMenu(user);
     }
 }

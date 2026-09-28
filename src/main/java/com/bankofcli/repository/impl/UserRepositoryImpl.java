@@ -8,19 +8,24 @@ import com.bankofcli.util.DBConnection;
 import java.sql.*;
 import java.util.Optional;
 
-public class JdbcUserRepository implements UserRepository {
+public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User save(User user) {
 
         String sql = """
-                INSERT INTO users (user_name, user_email, password_hash)
+                INSERT INTO my_bank.users
+                (user_name, user_email, password_hash)
                 VALUES (?, ?, ?)
                 """;
 
-        try (Connection con = DBConnection.getConnection();
-             PreparedStatement ps =
-                     con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+        try (
+                Connection con = DBConnection.getConnection();
+                PreparedStatement ps = con.prepareStatement(
+                        sql,
+                        Statement.RETURN_GENERATED_KEYS
+                )
+        ) {
 
             ps.setString(1, user.getUserName());
             ps.setString(2, user.getUserEmail());
@@ -28,67 +33,93 @@ public class JdbcUserRepository implements UserRepository {
 
             ps.executeUpdate();
 
-            ResultSet rs = ps.getGeneratedKeys();
+            // Get generated user_id
+            try (ResultSet rs = ps.getGeneratedKeys()) {
 
-            if (rs.next()) {
-                user.setUserId(rs.getLong(1));
+                if (rs.next()) {
+                    user.setUserId(rs.getLong(1));
+                }
             }
 
             return user;
 
         } catch (SQLException e) {
-            throw new BankException("Could not save user", e);
+            throw new BankException(
+                    "Could not save user",
+                    e
+            );
         }
     }
 
     @Override
     public Optional<User> findById(long userId) {
 
-        String sql = "SELECT * FROM users WHERE user_id = ?";
+        String sql = """
+                SELECT *
+                FROM my_bank.users
+                WHERE user_id = ?
+                """;
 
-        try (Connection con = DBConnection.getConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
+        try (
+                Connection con = DBConnection.getConnection();
+                PreparedStatement ps = con.prepareStatement(sql)
+        ) {
 
             ps.setLong(1, userId);
 
-            ResultSet rs = ps.executeQuery();
+            try (ResultSet rs = ps.executeQuery()) {
 
-            if (rs.next()) {
-                return Optional.of(map(rs));
+                if (rs.next()) {
+                    return Optional.of(map(rs));
+                }
+
+                return Optional.empty();
             }
 
-            return Optional.empty();
-
         } catch (SQLException e) {
-            throw new BankException("Could not find user", e);
+            throw new BankException(
+                    "Could not find user",
+                    e
+            );
         }
     }
 
     @Override
     public Optional<User> findByEmail(String email) {
 
-        String sql = "SELECT * FROM users WHERE user_email = ?";
+        String sql = """
+                SELECT *
+                FROM my_bank.users
+                WHERE user_email = ?
+                """;
 
-        try (Connection con = DBConnection.getConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
+        try (
+                Connection con = DBConnection.getConnection();
+                PreparedStatement ps = con.prepareStatement(sql)
+        ) {
 
             ps.setString(1, email);
 
-            ResultSet rs = ps.executeQuery();
+            try (ResultSet rs = ps.executeQuery()) {
 
-            if (rs.next()) {
-                return Optional.of(map(rs));
+                if (rs.next()) {
+                    return Optional.of(map(rs));
+                }
+
+                return Optional.empty();
             }
 
-            return Optional.empty();
-
         } catch (SQLException e) {
-            throw new BankException("Could not find user", e);
+            throw new BankException(
+                    "Could not find user",
+                    e
+            );
         }
     }
 
-
+    // Convert one database row into a User object
     private User map(ResultSet rs) throws SQLException {
+
         return new User(
                 rs.getLong("user_id"),
                 rs.getString("user_name"),

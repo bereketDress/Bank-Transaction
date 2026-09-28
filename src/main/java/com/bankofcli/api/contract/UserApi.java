@@ -1,4 +1,4 @@
-package com.bankofcli.api;
+package com.bankofcli.api.contract;
 public interface UserApi {
     void run();
 }

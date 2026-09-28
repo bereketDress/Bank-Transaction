@@ -5,21 +5,34 @@ import java.util.List;
 import java.util.Objects;
 
 public class User {
+
     private Long userId;
     private String userName;
     private String userEmail;
     private String passwordHash;
-    private List<Account> accounts = new ArrayList<>();
-    private List<SystemLog> systemLogs = new ArrayList<>();
 
-    public User() {
-    }
+    private final List<Account> accounts = new ArrayList<>();
+    private final List<SystemLog> systemLogs = new ArrayList<>();
 
     public User(Long userId, String userName, String userEmail, String passwordHash) {
         this.userId = userId;
-        this.userName = userName;
-        this.userEmail = userEmail;
-        this.passwordHash = passwordHash;
+        this.userName = Objects.requireNonNull(userName);
+        this.userEmail = Objects.requireNonNull(userEmail);
+        this.passwordHash = Objects.requireNonNull(passwordHash);
+    }
+
+    public void addAccount(Account account) {
+        Objects.requireNonNull(account);
+
+        if (!accounts.contains(account)) {
+            accounts.add(account);
+            account.setUser(this);
+        }
+    }
+
+    public void addSystemLog(SystemLog systemLog) {
+        Objects.requireNonNull(systemLog);
+        systemLogs.add(systemLog);
     }
 
     public Long getUserId() {
@@ -35,7 +48,7 @@ public class User {
     }
 
     public void setUserName(String userName) {
-        this.userName = userName;
+        this.userName = Objects.requireNonNull(userName);
     }
 
     public String getUserEmail() {
@@ -43,7 +56,7 @@ public class User {
     }
 
     public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
+        this.userEmail = Objects.requireNonNull(userEmail);
     }
 
     public String getPasswordHash() {
@@ -51,22 +64,14 @@ public class User {
     }
 
     public void setPasswordHash(String passwordHash) {
-        this.passwordHash = passwordHash;
+        this.passwordHash = Objects.requireNonNull(passwordHash);
     }
 
     public List<Account> getAccounts() {
         return accounts;
     }
 
-    public void setAccounts(List<Account> accounts) {
-        this.accounts = new ArrayList<>(Objects.requireNonNull(accounts));
-    }
-
     public List<SystemLog> getSystemLogs() {
         return systemLogs;
-    }
-
-    public void setSystemLogs(List<SystemLog> systemLogs) {
-        this.systemLogs = new ArrayList<>(Objects.requireNonNull(systemLogs));
     }
 }

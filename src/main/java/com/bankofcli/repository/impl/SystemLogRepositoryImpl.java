@@ -12,11 +12,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JdbcSystemLogRepository implements SystemLogRepository {
+public class SystemLogRepositoryImpl implements SystemLogRepository {
 
     private final UserRepository userRepository;
 
-    public JdbcSystemLogRepository(UserRepository userRepository) {
+    public SystemLogRepositoryImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
@@ -24,13 +24,19 @@ public class JdbcSystemLogRepository implements SystemLogRepository {
     public SystemLog save(SystemLog log) {
 
         String sql = """
-                INSERT INTO system_logs (user_id, log_level, message)
+                INSERT INTO my_bank.system_logs
+                (user_id, log_level, message)
                 VALUES (?, ?, ?)
                 """;
 
-        try (Connection con = DBConnection.getConnection();
-             PreparedStatement ps =
-                     con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+        try (
+                Connection con = DBConnection.getConnection();
+
+                PreparedStatement ps = con.prepareStatement(
+                        sql,
+                        Statement.RETURN_GENERATED_KEYS
+                )
+        ) {
 
             ps.setLong(1, log.getUser().getUserId());
             ps.setString(2, log.getLevel().name());
@@ -38,16 +44,21 @@ public class JdbcSystemLogRepository implements SystemLogRepository {
 
             ps.executeUpdate();
 
-            ResultSet rs = ps.getGeneratedKeys();
+            // Read generated log_id
+            try (ResultSet rs = ps.getGeneratedKeys()) {
 
-            if (rs.next()) {
-                log.setLogId(rs.getLong(1));
+                if (rs.next()) {
+                    log.setLogId(rs.getLong(1));
+                }
             }
 
             return log;
 
         } catch (SQLException e) {
-            throw new BankException("Could not save log", e);
+            throw new BankException(
+                    "Could not save log",
+                    e
+            );
         }
     }
 
@@ -56,7 +67,7 @@ public class JdbcSystemLogRepository implements SystemLogRepository {
 
         String sql = """
                 SELECT *
-                FROM system_logs
+                FROM my_bank.system_logs
                 WHERE user_id = ?
                 ORDER BY created_at DESC
                 LIMIT ?
@@ -64,32 +75,56 @@ public class JdbcSystemLogRepository implements SystemLogRepository {
 
         List<SystemLog> logs = new ArrayList<>();
 
-        try (Connection con = DBConnection.getConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
+        try (
+                Connection con = DBConnection.getConnection();
+                PreparedStatement ps = con.prepareStatement(sql)
+        ) {
 
             ps.setLong(1, userId);
             ps.setInt(2, limit);
 
-            ResultSet rs = ps.executeQuery();
+            try (ResultSet rs = ps.executeQuery()) {
 
-            while (rs.next()) {
+                User user = null;
 
-                User user = userRepository.findById(rs.getLong("user_id"))
-                        .orElseThrow(() -> new BankException("User not found"));
+                while (rs.next()) {
 
-                logs.add(new SystemLog(
-                        rs.getLong("log_id"),
-                        LogLevel.valueOf(rs.getString("log_level")),
-                        rs.getString("message"),
-                        rs.getTimestamp("created_at").toLocalDateTime(),
-                        user
-                ));
+                    // Load the user only once
+                    if (user == null) {
+                        user = userRepository
+                                .findById(userId)
+                                .orElseThrow(() ->
+                                        new BankException("User not found")
+                                );
+                    }
+
+                    SystemLog log = new SystemLog(
+                            rs.getLong("log_id"),
+
+                            // Convert database String to LogLevel enum
+                            LogLevel.valueOf(
+                                    rs.getString("log_level")
+                            ),
+
+                            rs.getString("message"),
+
+                            rs.getTimestamp("created_at")
+                                    .toLocalDateTime(),
+
+                            user
+                    );
+
+                    logs.add(log);
+                }
             }
 
             return logs;
 
         } catch (SQLException e) {
-            throw new BankException("Could not load logs", e);
+            throw new BankException(
+                    "Could not load logs",
+                    e
+            );
         }
     }
 }
